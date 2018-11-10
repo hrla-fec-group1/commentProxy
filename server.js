@@ -6,7 +6,7 @@ const port = process.env.PORT || 3001;
 var httpProxy = require('http-proxy');
 var apiProxy = httpProxy.createProxyServer();
 var serverOne = 'http://13.57.49.186:3000/',
-serverTwo ='http://localhost:3002',
+serverTwo ='http://54.183.184.86/',
 serverThree = 'http://localhost:3003'
 
 app.use(morgan('dev'));
