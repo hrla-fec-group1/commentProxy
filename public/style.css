@@ -107,7 +107,7 @@ background-position: center center;
 }
 .main {
   justify-content: center;
-  position: absolute;
+  position: relative;
 }
 .likeEle {
   padding: 5px 0;
