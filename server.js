@@ -7,7 +7,7 @@ var httpProxy = require('http-proxy');
 var apiProxy = httpProxy.createProxyServer();
 var serverOne = 'http://13.57.49.186:3000/',
 serverTwo ='http://54.183.184.86/',
-serverThree = 'http://localhost:3003'
+serverThree = 'http://52.13.8.105/'
 
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -21,22 +21,9 @@ app.all("/api/songs", function(req, res) {
 app.all("/data", function(req, res) {
     apiProxy.web(req, res, {target: serverOne});
 });
-app.all("/api/inc/:id", function(req, res) {
-    console.log('redirecting to Server1');
-    apiProxy.web(req, res, {target: serverThree});
-});
-app.all("/api/likedec/:id", function(req, res) {
-    console.log('redirecting to Server1');
-    apiProxy.web(req, res, {target: serverThree});
-});
-app.all("/api/repostinc/:id", function(req, res) {
-    console.log('redirecting to Server1');
-    apiProxy.web(req, res, {target: serverThree});
-});
-app.all("/api/repostdec/:id", function(req, res) {
-    console.log('redirecting to Server1');
-    apiProxy.web(req, res, {target: serverThree});
-});
+app.all('/artists', function(req, res) {
+  apiProxy.web(req, res, {target: serverThree});
+  });
 
 
 app.listen(port, () => {
