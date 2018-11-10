@@ -21,10 +21,24 @@ app.all("/api/songs", function(req, res) {
 app.all("/data", function(req, res) {
     apiProxy.web(req, res, {target: serverOne});
 });
-// app.all("/api/*", function(req, res) {
-//     console.log('redirecting to Server1');
-//     apiProxy.web(req, res, {target: serverThree});
-// });
+app.all("/api/inc/:id", function(req, res) {
+    console.log('redirecting to Server1');
+    apiProxy.web(req, res, {target: serverThree});
+});
+app.all("/api/likedec/:id", function(req, res) {
+    console.log('redirecting to Server1');
+    apiProxy.web(req, res, {target: serverThree});
+});
+app.all("/api/repostinc/:id", function(req, res) {
+    console.log('redirecting to Server1');
+    apiProxy.web(req, res, {target: serverThree});
+});
+app.all("/api/repostdec/:id", function(req, res) {
+    console.log('redirecting to Server1');
+    apiProxy.web(req, res, {target: serverThree});
+});
+
+
 app.listen(port, () => {
   console.log(`server running at: http://localhost:${port}`);
 });
