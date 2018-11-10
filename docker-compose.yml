@@ -1,24 +1,32 @@
-version: "2"
+version: "3.3"
 services:
-  proxy:
-    build: .
-    ports:
-    - "80:3000"
-  comments:
-    build: ./comments/.
-    ports:
-    -  "3001:3001"
-    depends_on:
-    - mongo
-  mediaplayer:
-    build: ./mediaplayer/.
-    ports:
-    -  "3002:3002"
-    depends_on:
-    - mongo
   mongo:
     image: mongo
     ports:
     - "27017:27017"
     volumes:
       - ./db:/data/db
+  comments:
+    build: ./comments/.
+    ports:
+    -  "3001:3001"
+    depends_on:
+    - mongo
+    links:
+    - mongo
+    environment:
+    - MONGO_URI=mongodb://mongo:27017/comments
+  # mediaplayer:
+  #   build: ./mediaplayer/.
+  #   ports:
+  #   -  "3002:3002"
+  #   depends_on:
+  #   - mongo
+  #   links:
+  #   - mongo
+  #   environment:
+  #   - MONGO_URI=mongodb://mongo:27017/mediaplayer
+  proxy:
+    build: .
+    ports:
+    - "80:3000"
