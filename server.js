@@ -5,7 +5,7 @@ const app = express();
 const port = process.env.PORT || 3001;
 var httpProxy = require('http-proxy');
 var apiProxy = httpProxy.createProxyServer();
-var serverOne = 'http://localhost:3001',
+var serverOne = 'http://localhost:3000',
 serverTwo ='http://localhost:3002',
 serverThree = 'http://localhost:3003'
 
